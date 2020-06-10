@@ -25,6 +25,8 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "server": "set debug=* && ts-node-dev --respawn --transpileOnly ./src/index.ts"
+    "server": "set debug=* && ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   }
 }
