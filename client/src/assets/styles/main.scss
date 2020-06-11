@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
 @import
   './abstracts/variables',
   './abstracts/mixins';
@@ -15,3 +19,7 @@
   './layout/header',
   './layout/footer',
   './layout/content';
+
+@import
+  './components/buttons',
+  './components/cardVote';

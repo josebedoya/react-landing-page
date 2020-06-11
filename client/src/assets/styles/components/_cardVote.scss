@@ -1,0 +1,42 @@
+.cardVote {
+  width: 492px;
+  height: 550px;
+  margin: 20px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  &:before {
+    @include pseudo-bg;
+    z-index: 1;
+    background-image: linear-gradient(to top, #000, transparent);
+  }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .info {
+    position: relative;
+    z-index: 1;
+    padding: 0 80px 80px 40px;
+    color: #fff;
+  }
+  h3 {
+    color: #fff;
+    font-size: 45px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+  time {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .category {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+}

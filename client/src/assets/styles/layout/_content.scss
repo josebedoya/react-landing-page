@@ -18,3 +18,12 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.votes {
+  padding-top: 20px;
+}
+.cards-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

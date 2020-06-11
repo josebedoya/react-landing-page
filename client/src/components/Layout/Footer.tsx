@@ -20,6 +20,12 @@ const Footer: React.FC = () => {
         </nav>
         <div className='social'>
           Folow Us
+          <Link to='/'>
+            <i className="fab fa-facebook-square"></i>
+          </Link>
+          <Link to='/'>
+            <i className="fab fa-twitter"></i>
+          </Link>
         </div>
       </div>
     </footer>
