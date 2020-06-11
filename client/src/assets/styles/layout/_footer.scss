@@ -1,0 +1,28 @@
+.footer {
+  position: relative;
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 55px;
+    background-image: url('../../images/footer-border.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    font-size: 12px;
+  }
+  nav {
+    ul {
+      display: flex;
+    }
+    li {
+      margin-right: 10px;
+    }
+    a {
+      color: $primary-text-color;
+    }
+  }
+  .social {
+    display: flex;
+    color: #666;
+  }
+}
