@@ -1,52 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import heroHomeImage from './../../assets/images/hero-home.jpg';
-import kanyePic from './../../assets/images/kanye-west.jpg';
-import markPic from './../../assets/images/mark.jpg';
-import cristinaPic from './../../assets/images/cristina-fernandez.jpg';
-import malayaPic from './../../assets/images/malaya-yousafzai.jpg';
 import CardVote from '../../components/Shared/CardVote';
+import characters from './../../data/characters.json';
+import HeroCard from '../../components/Shared/HeroCard';
+import BottomBanner from '../../components/Shared/BottomBanner';
+import MessageBox from '../../components/Shared/MessageBox';
 
 const HomePage: React.FC = () => {
+  const [showMessageBox, setShowMessageBox] = useState<boolean>(true);
+
+  const renderCharacters = () =>
+  characters.map((item: any) => (
+    <CardVote
+      key={item.id}
+      id={item.id}
+      title={item.title}
+      image={item.image}
+      time={item.time}
+      category={item.category}
+      summary={item.summary}
+      upPercent={64}
+      downPercent={36}
+    />
+  ));
+
   return (
     <>
       <section
         className='section-content hero-home'
         style={{ backgroundImage: `url(${heroHomeImage})` }}
-      ></section>
+      >
+        <div className='content-inner'>
+          <HeroCard />
+        </div>
+        <div className='hero-home__footer'>
+          <div className='left'>Closing in</div>
+          <div className='right'><b>22</b> days</div>
+        </div>
+      </section>
       <section className='section-content votes'>
         <div className='content-inner'>
+          {showMessageBox && (
+            <MessageBox onClick={() => setShowMessageBox(false)} />
+          )}
           <h2>Votes</h2>
-          <div className='cards-items'>
-            <CardVote
-              title='Kanye West'
-              image={kanyePic}
-              time='1 month ago'
-              category='Entertaiment'
-              summary='Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.'
-            />
-            <CardVote
-              title='Mark Zuckerberg'
-              image={markPic}
-              time='1 month ago'
-              category='Business'
-              summary='Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.'
-            />
-            <CardVote
-              title='Cristina Fernández de Kirchner'
-              image={cristinaPic}
-              time='1 month ago'
-              category='Politics'
-              summary='Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.'
-            />
-            <CardVote
-              title='Malala Yousafzai'
-              image={malayaPic}
-              time='1 month ago'
-              category='Entertaiment'
-              summary='Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.'
-            />
-          </div>
+          <div className='cards-items'>{renderCharacters()}</div>
+        </div>
+      </section>
+      <section className='section-content'>
+        <div className='content-inner'>
+          <BottomBanner />
         </div>
       </section>
     </>

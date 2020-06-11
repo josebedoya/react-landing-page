@@ -9,7 +9,7 @@
   &:before {
     @include pseudo-bg;
     z-index: 1;
-    background-image: linear-gradient(to top, #000, transparent);
+    background-image: linear-gradient(to top, rgba(#000, 0.7), transparent);
   }
   img {
     position: absolute;
@@ -38,5 +38,64 @@
   }
   p {
     margin-bottom: 20px;
+  }
+
+  &__actions {
+    form {
+      display: flex;
+      align-items: center;
+    }
+    input[type="radio"] {
+      appearance: none;
+      width: 31px;
+      height: 31px;
+      background: $primary-bg-color;
+      margin-right: 12px;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 0 0 0 #fff;
+      position: relative;
+      cursor: pointer;
+      &:after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        content: '\f164';
+        font-family: $icon-font;
+        font-size: 16px;
+        color: #fff;
+      }
+      &:nth-child(2) {
+        background: $secondary-bg-color;
+        &:after {
+          transform: translate(-50%, -50%) scale(-1);
+        }
+      }
+      &:checked {
+        box-shadow: 0 0 0 2px #fff;
+      }
+    }
+  }
+
+  &__bar {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+    color: #fff;
+    .thumbsUpBar,
+    .thumbsDownBar {
+      i {
+        font-size: 28px;
+      }
+    }
+    .thumbsUpBar {
+      background: rgba($primary-bg-color, 0.7);
+      justify-content: flex-start;
+    }
+    .thumbsDownBar {
+      background: rgba($secondary-bg-color, 0.7);
+      justify-content: flex-end;
+    }
   }
 }

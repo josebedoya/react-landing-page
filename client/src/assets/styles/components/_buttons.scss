@@ -25,18 +25,22 @@
     background: rgba(#ebebeb, 0.3);
     text-decoration: none;
   }
-  &.eip-button--color-2 {
-    box-shadow: 0 0 0 1px rgba(#FFF, 1);
-    background: transparent;
-    &:before {
-      background: #000;
-    }
-    &:after {
-      background: #F57D22;
-    }
+  //
+  &.rot-button--color-2 {
+    box-shadow: 0 0 0 1px rgba(#000, 1);
+    background: rgba(#fff, 0.15);
+    color: $primary-text-color;
     &:hover {
-      background-color: #FFF;
-      color: #fff !important;
+      background-color: rgba(#fff, 0.7);
+    }
+  }
+  //
+  &.rot-button--size-large {
+    padding: 16px 38px 17px;
+    font-size: 20px;
+    font-weight: 400;
+    &.rot-button--color-2 {
+      box-shadow: 0 0 0 3px rgba(#000, 1);
     }
   }
 }

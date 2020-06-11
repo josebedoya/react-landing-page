@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import searchIcon from './../../assets/images/search.svg';
 
 const Header: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
+        <img src={searchIcon} alt='Search' />
       </div>
     </header>
   );

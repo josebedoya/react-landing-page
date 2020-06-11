@@ -1,0 +1,77 @@
+.heroCard {
+  width: 500px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+
+  &__body {
+    height: 370px;
+    padding: 38px 32px;
+    &:before {
+      @include pseudo-bg;
+      background: rgba(#fff, 0.45);
+      z-index: 0;
+      filter: blur(30px);
+      -webkit-filter: blur(30px);
+    }
+    &:after {
+      @include pseudo-bg;
+      background: rgba(#000, 0.45);
+    }
+    .info {
+      position: relative;
+      z-index: 2;
+    }
+    .title {
+      font-weight: 400;
+      font-size: 60px;
+      margin: 0 0 20px;
+      line-height: 1;
+    }
+    .summary {
+      font-size: 21px;
+      margin-bottom: 25px;
+      line-height: 1.1;
+    }
+    .more-info {
+      color: #fff;
+      i {
+        font-size: 10px;
+        margin-right: 5px;
+      }
+      span {
+        font-size: 14px;
+        display: inline-block;
+        position: relative;
+        &:before {
+          @include pseudo-bg;
+          bottom: 0;
+          top: auto;
+          width: 0;
+          height: 1px;
+          background: #fff;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+      &:hover {
+        span:before {
+          width: 100%;
+        }
+      }
+    }
+    .next {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+
+  &__footer {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+  }
+}
