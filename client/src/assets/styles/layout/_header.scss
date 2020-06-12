@@ -42,3 +42,10 @@
     right: 0;
   }
 }
+
+.closeModalBtn {
+  position: fixed;
+  z-index: 50;
+  top: 75px;
+  right: 120px;
+}
