@@ -30,7 +30,7 @@
   position: absolute;
   z-index: 1;
   left: 0;
-  bottom: 262px;
+  bottom: 212px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,6 +48,15 @@
     background: $secondary-bg-color;
     i {
       transform: scale(-1);
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .thumbsUpBar,
+  .thumbsDownBar {
+    i {
+      font-size: 28px;
     }
   }
 }

@@ -25,4 +25,14 @@
     width: 400px;
     z-index: 2;
   }
+
+  //
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 15px;
+    .card {
+      max-width: 400px;
+    }
+  }
+
 }

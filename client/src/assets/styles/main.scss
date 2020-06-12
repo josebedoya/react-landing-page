@@ -27,6 +27,9 @@
   './components/messageBox',
   './components/heroCard',
   './components/thumbs',
+  './components/bottomBanner',
   './components/cardVote';
 
-  @import './pages/login';
+  @import
+    './pages/loginPage',
+    './pages/homePage';

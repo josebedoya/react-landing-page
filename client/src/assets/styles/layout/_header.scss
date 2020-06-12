@@ -41,6 +41,33 @@
     position: absolute;
     right: 0;
   }
+
+  //
+
+  @media only screen and (max-width: 700px) {
+    nav {
+      li {
+        margin: 0 10px;
+      }
+    }
+  }
+  //
+  @media only screen and (max-width: 600px) {
+    nav {
+      li {
+        margin: 0 6px;
+      }
+      a {
+        font-size: 14px;
+      }
+    }
+    .header-inner {
+      a.logo {
+        font-size: 20px;
+      }
+    }
+  }
+
 }
 
 .closeModalBtn {
@@ -48,4 +75,10 @@
   z-index: 50;
   top: 75px;
   right: 120px;
+  //
+  @media only screen and (max-width: 600px) {
+    top: 30px;
+  right: 30px;
+
+  }
 }
