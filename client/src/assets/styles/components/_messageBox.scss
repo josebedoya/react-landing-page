@@ -1,0 +1,43 @@
+.message-box {
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 22px 68px 22px 27px;
+  background: #ebebeb;
+  display: flex;
+  align-items: center;
+  position: relative;
+  aside {
+    font-size: 21px;
+    margin-right: 25px;
+    line-height: 1.1;
+    flex: 0 0 auto;
+    strong {
+      font-size: 37px;
+      display: block;
+    }
+  }
+  .info {
+    font-size: 15px;
+    line-height: 1.53;
+    letter-spacing: -0.15px;
+  }
+  button {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  //
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    button {
+      top: 15px;
+      right: 15px;
+      transform: none;
+    }
+  }
+}

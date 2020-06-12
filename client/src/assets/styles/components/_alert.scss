@@ -1,0 +1,20 @@
+.alert {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+  margin: 10px 0;
+
+  &__success {
+    background: $success-color;
+  }
+
+  &__warning {
+    background: $warning-color;
+  }
+
+  &__error {
+    background: $error-color;
+  }
+}

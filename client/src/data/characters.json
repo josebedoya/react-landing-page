@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Kanye West",
+    "image": "images/kanye-west.jpg",
+    "time": "1 month ago",
+    "category": "Entertainment",
+    "summary": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero."
+  },
+  {
+    "id": 2,
+    "title": "Mark Zuckerberg",
+    "image": "images/mark.jpg",
+    "time": "1 month ago",
+    "category": "Business",
+    "summary": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero."
+  },
+  {
+    "id": 3,
+    "title": "Cristina Fernández de Kirchner",
+    "image": "images/cristina-fernandez.jpg",
+    "time": "1 month ago",
+    "category": "Politics",
+    "summary": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero."
+  },
+  {
+    "id": 4,
+    "title": "Malala Yousafzai",
+    "image": "images/malaya-yousafzai.jpg",
+    "time": "1 month ago",
+    "category": "Entertainment",
+    "summary": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero."
+  }
+]

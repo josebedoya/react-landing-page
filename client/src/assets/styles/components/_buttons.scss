@@ -1,0 +1,66 @@
+.rot-button {
+  width: max-content;
+  width: fit-content;
+  font-family: $body-font;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 14px 25px 12px;
+  text-decoration: none;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(#000, 0.15);
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(#fff, 1);
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  &:disabled {
+    opacity: 0.3;
+  }
+  &:hover:enabled {
+    background-color: rgba(#ebebeb, 0.3);
+    text-decoration: none;
+  }
+  //
+  &.rot-button--color-2 {
+    box-shadow: 0 0 0 1px rgba(#000, 1);
+    background-color: rgba(#fff, 0.15);
+    color: $primary-text-color;
+    &:hover {
+      background-color: rgba(#fff, 0.7);
+    }
+  }
+  //
+  &.rot-button--size-large {
+    padding: 16px 38px 17px;
+    font-size: 20px;
+    font-weight: 400;
+    &.rot-button--color-2 {
+      box-shadow: 0 0 0 3px rgba(#000, 1);
+    }
+  }
+}
+
+/**/
+
+@media only screen and (max-width: 960px) {
+  .rot-button {
+    &.rot-button--size-large {
+      padding: 12px 18px;
+      font-size: 18px;
+    }
+  }
+}
+//
+@media only screen and (max-width: 768px) {
+  .rot-button {
+    padding: 12px 14px;
+  }
+}

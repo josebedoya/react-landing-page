@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+@import
+  './abstracts/variables',
+  './abstracts/mixins';
+
+@import
+  './base/reset',
+  './base/base';
+
+@import
+  './layout/basic',
+  './layout/header',
+  './layout/footer',
+  './layout/forms',
+  './layout/content';
+
+@import
+  './components/buttons',
+  './components/alert',
+  './components/messageBox',
+  './components/heroCard',
+  './components/thumbs',
+  './components/bottomBanner',
+  './components/cardVote';
+
+  @import
+    './pages/loginPage',
+    './pages/homePage';

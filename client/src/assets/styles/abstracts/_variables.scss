@@ -1,0 +1,49 @@
+/*
+| -------------------------------------------------------------------
+| Base Colors
+| -------------------------------------------------------------------
+*/
+
+$primary-bg-color: #1cbbb4;
+$secondary-bg-color: #ffad1d;
+
+$content-bg-color: #fff;
+
+$error-color: #ad343e;
+$success-color: #5cb85c;
+$warning-color: #ffa400;
+
+$primary-text-color: #333;
+$secondary-text-color: #fff;
+
+$heading-color: #333;
+
+/*
+| -------------------------------------------------------------------
+| Line Height Variables
+| -------------------------------------------------------------------
+*/
+$line-height-base: 1.4;
+$line-height-content: 1.3;
+
+/*
+| -------------------------------------------------------------------
+| Font Families
+| -------------------------------------------------------------------
+*/
+$body-font: 'Lato', sans-serif;
+$heading-font: 'Lato', sans-serif;
+$icon-font: 'Font Awesome 5 Free';
+
+/*
+| -------------------------------------------------------------------
+| Font Sizes
+| -------------------------------------------------------------------
+*/
+$font-size-base: 16px !default;
+$font-size-h1: 60px !default;
+$font-size-h2: 40px !default;
+$font-size-h3: 30px !default;
+$font-size-h4: 26px !default;
+$font-size-h5: 20px !default;
+$font-size-h6: 18px !default;

@@ -1,0 +1,114 @@
+/*
+| -------------------------------------------------------------------
+| Layout Structure
+| -------------------------------------------------------------------
+*/
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr max-content;
+  grid-template-areas:
+    'content'
+    'footer';
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.main-content {
+  grid-area: content;
+}
+.footer {
+  grid-area: footer;
+}
+
+/**/
+
+.header,
+.main-content,
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1024px 1fr;
+}
+
+.header {
+  .header-inner {
+    grid-column: 2 / -2;
+  }
+}
+
+.footer {
+  .footer-inner {
+    grid-column: 2 / -2;
+  }
+}
+
+.main-content {
+  grid-row: 1 / 2;
+  overflow: hidden;
+  > * {
+    grid-column: 2 / -2;
+  }
+  .section-content {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1024px 1fr;
+    position: relative;
+    .content-inner {
+      grid-column: 2 / -2;
+    }
+    .currentSection,
+    .heading-block {
+      grid-column: 3 / -3;
+    }
+    .swiper-container,
+    .info-map {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.cabhome, .cabint {
+	grid-column: 1 / -1;
+}
+
+/**/
+
+@media only screen and (max-width: 1060px) {
+  .header,
+  .main-content,
+  .main-content .section-content,
+  .footer {
+    grid-template-columns: 40px 1fr 40px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .header,
+  .main-content,
+  .main-content .section-content,
+  .footer {
+    grid-template-columns: 20px 1fr 20px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 26px;
+  }
+  h4 {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header,
+  .main-content,
+  .main-content .section-content,
+  .footer {
+    grid-template-columns: 10px 1fr 10px;
+  }
+}

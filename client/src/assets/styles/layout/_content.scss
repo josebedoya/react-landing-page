@@ -1,0 +1,17 @@
+#root {
+  &:before {
+    @include pseudo-bg;
+    height: 150px;
+    z-index: 1;
+    background-image: linear-gradient(to bottom, #333333, transparent);
+  }
+}
+
+.votes {
+  padding-top: 33px;
+}
+.cards-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
