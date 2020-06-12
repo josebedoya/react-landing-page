@@ -41,6 +41,7 @@
   }
 
   &__actions {
+    min-height: 40px;
     form {
       display: flex;
       align-items: center;
@@ -64,12 +65,16 @@
         font-family: $icon-font;
         font-size: 16px;
         color: #fff;
+        transition: all 0.2s ease-in-out;
       }
       &:nth-child(2) {
         background: $secondary-bg-color;
         &:after {
           transform: translate(-50%, -50%) scale(-1);
         }
+      }
+      &:hover:after {
+        font-size: 17px;
       }
       &:checked {
         box-shadow: 0 0 0 2px #fff;

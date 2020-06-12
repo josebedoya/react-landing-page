@@ -9,6 +9,8 @@ interface Props {
   summary: string;
   upPercent: number;
   downPercent: number;
+  isAuthenticated: boolean;
+  handleSubmit: (option: string, id: number) => void;
 }
 
 const CardVote = ({
@@ -20,17 +22,20 @@ const CardVote = ({
   summary,
   upPercent,
   downPercent,
+  isAuthenticated,
+  handleSubmit,
 }: Props): JSX.Element => {
-  const [optionSelected, setOptionSelected] = useState<string>();
+  const [optionSelected, setOptionSelected] = useState<string>('');
 
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
     setOptionSelected(value);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(optionSelected, id);
+    // console.log(optionSelected, id);
+    handleSubmit(optionSelected, id);
   };
 
   return (
@@ -42,24 +47,30 @@ const CardVote = ({
         <span className='category'> in {category}</span>
         <p>{summary}</p>
         <div className='cardVote__actions'>
-          <form onSubmit={handleSubmit}>
-            <input
-              type='radio'
-              name={`vote[${id}]`}
-              value='up'
-              onChange={handleRadioChange}
-            />
-            <input
-              type='radio'
-              name={`vote[${id}]`}
-              value='down'
-              onChange={handleRadioChange}
-            />
-            <input type='hidden' name='id' value={id} />
-            <button className='rot-button' type='submit'>
-              Vote now
-            </button>
-          </form>
+          {isAuthenticated && (
+            <form onSubmit={onSubmit}>
+              <input
+                type='radio'
+                name={`vote[${id}]`}
+                value='up'
+                onChange={handleRadioChange}
+              />
+              <input
+                type='radio'
+                name={`vote[${id}]`}
+                value='down'
+                onChange={handleRadioChange}
+              />
+              <input type='hidden' name='id' value={id} />
+              <button
+                className='rot-button'
+                type='submit'
+                disabled={optionSelected ? false : true}
+              >
+                Vote now
+              </button>
+            </form>
+          )}
         </div>
       </div>
       <div className='cardVote__bar'>

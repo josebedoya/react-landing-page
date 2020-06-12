@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/rootReducer';
 
 import heroHomeImage from './../../assets/images/hero-home.jpg';
 import CardVote from '../../components/Shared/CardVote';
@@ -9,6 +11,12 @@ import MessageBox from '../../components/Shared/MessageBox';
 
 const HomePage: React.FC = () => {
   const [showMessageBox, setShowMessageBox] = useState<boolean>(true);
+
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+
+  const handleVoteSubmit = (option: string, id: number) => {
+    console.log('aca', option, id);
+  }
 
   const renderCharacters = () =>
   characters.map((item: any) => (
@@ -22,6 +30,8 @@ const HomePage: React.FC = () => {
       summary={item.summary}
       upPercent={64}
       downPercent={36}
+      isAuthenticated={isAuthenticated}
+      handleSubmit={handleVoteSubmit}
     />
   ));
 
