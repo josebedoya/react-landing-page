@@ -9,7 +9,6 @@ import {
 import { IsNotEmpty } from 'class-validator';
 
 @Entity()
-@Unique(['email'])
 export class Character {
   @PrimaryGeneratedColumn()
   id: number;
