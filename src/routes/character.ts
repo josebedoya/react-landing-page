@@ -5,7 +5,7 @@ import { checkJwt } from './../middleware/jwt';
 const router = Router();
 
 // Get all characters
-router.get('/', [checkJwt], CharacterController.getAll);
+router.get('/', CharacterController.getAll);
 
 // Create a new character
 router.post('/', [checkJwt], CharacterController.create);

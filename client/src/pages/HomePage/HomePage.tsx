@@ -1,39 +1,46 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/rootReducer';
+import { fetchCharacters } from './characterSlice';
 
 import heroHomeImage from './../../assets/images/hero-home.jpg';
 import CardVote from '../../components/Shared/CardVote';
-import characters from './../../data/characters.json';
+// import characters from './../../data/characters.json';
 import HeroCard from '../../components/Shared/HeroCard';
 import BottomBanner from '../../components/Shared/BottomBanner';
 import MessageBox from '../../components/Shared/MessageBox';
 
 const HomePage: React.FC = () => {
+  const dispatch = useDispatch();
   const [showMessageBox, setShowMessageBox] = useState<boolean>(true);
 
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { data: characters } = useSelector((state: RootState) => state.characters);
+
+  useEffect(() => {
+    dispatch(fetchCharacters());
+  }, []);
 
   const handleVoteSubmit = (option: string, id: number) => {
-    console.log('aca', option, id);
-  }
+    console.log(option, id);
+  };
 
   const renderCharacters = () =>
-  characters.map((item: any) => (
-    <CardVote
-      key={item.id}
-      id={item.id}
-      title={item.title}
-      image={item.image}
-      time={item.time}
-      category={item.category}
-      summary={item.summary}
-      upPercent={64}
-      downPercent={36}
-      isAuthenticated={isAuthenticated}
-      handleSubmit={handleVoteSubmit}
-    />
-  ));
+    characters.map((item: any) => (
+      <CardVote
+        key={item.id}
+        id={item.id}
+        title={item.title}
+        image={`images/${item.image}`}
+        time={item.time}
+        category={item.category}
+        summary={item.summary}
+        upPercent={64}
+        downPercent={36}
+        isAuthenticated={isAuthenticated}
+        handleSubmit={handleVoteSubmit}
+      />
+    ));
 
   return (
     <>
@@ -46,7 +53,9 @@ const HomePage: React.FC = () => {
         </div>
         <div className='hero-home__footer'>
           <div className='left'>Closing in</div>
-          <div className='right'><b>22</b> days</div>
+          <div className='right'>
+            <b>22</b> days
+          </div>
         </div>
       </section>
       <section className='section-content votes'>
