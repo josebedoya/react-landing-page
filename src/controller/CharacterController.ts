@@ -2,11 +2,17 @@ import { getRepository } from 'typeorm';
 import { Request, Response } from 'express';
 import { Character } from '../entity/Character';
 import { validate } from 'class-validator';
+import { getJwtData } from '../middleware/jwt';
 
 export class CharacterController {
   static getAll = async (req: Request, res: Response): Promise<Response> => {
+    const token = req.headers['x-auth-token'];
+    let userData: any | null;
+    if (token) {
+      userData = getJwtData(token as string);
+    }
     try {
-      const characters = await getRepository(Character)
+      let characters: any = await getRepository(Character)
         .createQueryBuilder('character')
         .leftJoinAndSelect('character.userCharacterVote', 'userCharacterVote')
         .select('character.id', 'id')
@@ -28,9 +34,13 @@ export class CharacterController {
         .addSelect(
           "CONCAT(ROUND((COUNT(IF(userCharacterVote.vote = 'down', 1, NULL))/COUNT(*))*100,2)) as votesDownPercentage",
         )
-        .groupBy('character.id')
-        .getRawMany();
-      return res.json(characters);
+        .groupBy('character.id');
+
+      if (userData) {
+        characters.addSelect(`COUNT(IF(userCharacterVote.userId = ${userData.userId}, 1, NULL)) "userTotalVotes"`)
+      }
+      const results = await characters.getRawMany();
+      return res.json(results);
     } catch (err) {
       res.status(500).send('Server Error');
     }
