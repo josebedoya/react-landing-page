@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/rootReducer';
-import { fetchCharacters } from './characterSlice';
+import { fetchCharacters, createCharacterVote } from './characterSlice';
 
 import heroHomeImage from './../../assets/images/hero-home.jpg';
 import CardVote from '../../components/Shared/CardVote';
@@ -19,10 +19,19 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchCharacters());
-  }, []);
+  }, [dispatch]);
 
-  const handleVoteSubmit = (option: string, id: number) => {
-    console.log(option, id);
+  useEffect(() => {
+    if (isAuthenticated) dispatch(fetchCharacters());
+  }, [dispatch, isAuthenticated]);
+
+  const handleVoteSubmit = async (characterId: number, vote: string): Promise<boolean> => {
+    const response: any = await dispatch(createCharacterVote({ characterId, vote }));
+    if (createCharacterVote.fulfilled.match(response)) {
+      dispatch(fetchCharacters());
+      return true;
+    }
+    return false;
   };
 
   const renderCharacters = () =>
@@ -35,9 +44,10 @@ const HomePage: React.FC = () => {
         time={item.time}
         category={item.category}
         summary={item.summary}
-        upPercent={64}
-        downPercent={36}
+        upPercent={item.votesUpPercentage}
+        downPercent={item.votesDownPercentage}
         isAuthenticated={isAuthenticated}
+        userTotalVotes={item.userTotalVotes}
         handleSubmit={handleVoteSubmit}
       />
     ));

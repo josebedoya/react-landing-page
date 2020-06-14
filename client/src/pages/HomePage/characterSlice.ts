@@ -20,6 +20,11 @@ interface IFormFields {
   id?: number | null;
 }
 
+interface IVote {
+  characterId: number;
+  vote: string;
+}
+
 const initialState: IState = {
   isLoading: false,
   isSubmitting: false,
@@ -58,6 +63,18 @@ export const createCharacter = createAsyncThunk(
   },
 );
 
+export const createCharacterVote = createAsyncThunk(
+  'characters/createCharacterVote',
+  async (data: IVote, { rejectWithValue }) => {
+    try {
+      const response = await API.post('/characterVote', data);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  },
+);
+
 const courseCategoriesSlice = createSlice({
   name: 'courseCategories',
   initialState,
@@ -89,6 +106,13 @@ const courseCategoriesSlice = createSlice({
     builder.addCase(createCharacter.rejected, (state, action) => {
       const { payload } = action;
       state.isSubmitting = false;
+      state.error = payload;
+    });
+    //
+    builder.addCase(createCharacterVote.pending, state => {});
+    builder.addCase(createCharacterVote.fulfilled, state => {});
+    builder.addCase(createCharacterVote.rejected, (state, action) => {
+      const { payload } = action;
       state.error = payload;
     });
   },

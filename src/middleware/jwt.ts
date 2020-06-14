@@ -17,3 +17,11 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('token', newToken);
   next();
 };
+
+export const getJwtData = (token: string) => {
+  try {
+    return <any>jwt.verify(token, config.jwtSecret);
+  } catch (err) {
+    return false;
+  }
+}
