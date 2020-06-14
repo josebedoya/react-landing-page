@@ -2,11 +2,12 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  Unique,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
+import { UserCharacterVote } from './UserCharacterVote';
 
 @Entity()
 export class Character {
@@ -44,4 +45,7 @@ export class Character {
   @Column()
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(type => UserCharacterVote, userCharacterVote => userCharacterVote.character)
+  userCharacterVote: UserCharacterVote[];
 }

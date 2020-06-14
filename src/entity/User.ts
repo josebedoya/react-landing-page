@@ -5,11 +5,13 @@ import {
   Unique,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
   BeforeInsert,
   BeforeUpdate,
 } from 'typeorm';
 import { IsEmail, MinLength, MaxLength, IsNotEmpty } from 'class-validator';
 import * as bcrypt from 'bcryptjs';
+import { UserCharacterVote } from './UserCharacterVote';
 
 export enum Status {
   MARRIED = 'Married',
@@ -68,6 +70,9 @@ export class User {
   @Column()
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(type => UserCharacterVote, userCharacterVote => userCharacterVote.user)
+  userCharacterVote: UserCharacterVote[];
 
   @BeforeInsert()
   @BeforeUpdate()

@@ -6,7 +6,30 @@ import { validate } from 'class-validator';
 export class CharacterController {
   static getAll = async (req: Request, res: Response): Promise<Response> => {
     try {
-      const characters = await getRepository(Character).find();
+      const characters = await getRepository(Character)
+        .createQueryBuilder('character')
+        .leftJoinAndSelect('character.userCharacterVote', 'userCharacterVote')
+        .select('character.id', 'id')
+        .addSelect('character.title', 'title')
+        .addSelect('character.image', 'image')
+        .addSelect('character.createdAt', 'createdAt')
+        .addSelect('character.category', 'category')
+        .addSelect('character.summary', 'summary')
+        .addSelect('COUNT(*) as totalVotes')
+        .addSelect(
+          'COUNT(IF(userCharacterVote.vote = "up", 1, NULL)) "votesUp"',
+        )
+        .addSelect(
+          "CONCAT(ROUND((COUNT(IF(userCharacterVote.vote = 'up', 1, NULL))/COUNT(*))*100,2)) as votesUpPercentage",
+        )
+        .addSelect(
+          'COUNT(IF(userCharacterVote.vote = "down", 1, NULL)) "votesDown"',
+        )
+        .addSelect(
+          "CONCAT(ROUND((COUNT(IF(userCharacterVote.vote = 'down', 1, NULL))/COUNT(*))*100,2)) as votesDownPercentage",
+        )
+        .groupBy('character.id')
+        .getRawMany();
       return res.json(characters);
     } catch (err) {
       res.status(500).send('Server Error');
