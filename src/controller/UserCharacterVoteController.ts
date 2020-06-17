@@ -31,6 +31,15 @@ export class UserCharacterVoteController {
     }
 
     try {
+      const userVotes = await getRepository(UserCharacterVote)
+      .createQueryBuilder('userCharacterVote')
+      .where("userCharacterVote.userId = :userId AND userCharacterVote.characterId = :characterId", { userId, characterId })
+      .getMany();
+      //
+      if (userVotes.length >= 3) {
+        return res.status(403).json({message: 'You reached the voting limit on this card'});
+      }
+      //
       await getRepository(UserCharacterVote).save(characterVote);
     } catch (err) {
       return res.status(409).json({ message: 'Error registering the vote' });
